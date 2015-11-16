@@ -1,0 +1,51 @@
+﻿@model IEnumerable<EF.Core.Data.Car>
+@using EF.Web.Models
+
+<div class="book-example panel panel-primary">
+    <div class="panel-heading panel-head">Cars Listing</div>
+    <div class="panel-body">
+        <a id="createEditBookModal" href="@Url.Action("CreateEditCar")" class="btn btn-success">
+            <span class="glyphicon glyphicon-plus"></span>Cars
+        </a>
+
+        <table class="table" style="margin: 4px">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Model)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Make)
+                </th>
+                <th>Action
+                </th>
+
+                <th></th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Model)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Make)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "CreateEditCar", new { id = item.ID }, new { @class = "btn btn-success" }) |
+                        @Html.ActionLink("Details", "DetailCar", new { id = item.ID }, new { @class = "btn btn-primary" }) |
+                        @Html.ActionLink("Delete", "DeleteCar", new { id = item.ID }, new { @class = "btn btn-danger" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
+
+
